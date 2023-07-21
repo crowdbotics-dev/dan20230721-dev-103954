@@ -1,15 +1,29 @@
+import { useSelector } from "react-redux";
+import { api_v1_login_create } from "../../store/dandevAPI/authTokens.slice.js";
+import { useDispatch } from "react-redux";
 import { Pressable } from "react-native";
 import React from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 const Untitled2 = () => {
+  const {
+    entities: test
+  } = useSelector(state => state.test);
+  const dispatch = useDispatch();
+
+  const onSubmit = () => {
+    dispatch(api_v1_login_create({
+      test
+    }));
+  };
+
   return <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={{
       backgroundColor: '#f0f0f1',
       padding: 10,
       position: 'relative',
       flex: 1
-    }}><Pressable><View style={styles.EAfsHIVj}></View></Pressable></ScrollView>
+    }}><Pressable onPress={onSubmit}><View style={styles.EAfsHIVj}></View></Pressable></ScrollView>
     </SafeAreaView>;
 };
 
